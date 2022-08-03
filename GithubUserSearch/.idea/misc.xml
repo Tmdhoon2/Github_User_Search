@@ -3,8 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/hks02/Desktop/Git/Github_User_Search/GithubUserSearch/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/hks02/Desktop/Git/Github_User_Search/GithubUserSearch/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/hks02/Desktop/Git/Github_User_Search/GithubUserSearch/app/src/main/res/layout/activity_splash.xml" value="0.33425925925925926" />
+        <entry key="..\:/Users/hks02/Desktop/Git/Github_User_Search/GithubUserSearch/app/src/main/res/layout/user_list.xml" value="0.36614583333333334" />
       </map>
     </option>
   </component>
