@@ -1,6 +1,7 @@
 package com.example.githubusersearch
 
-import android.app.Activity
+
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -22,12 +23,25 @@ class MainActivity : AppCompatActivity() {
             RetrofitBuilder.api.user(binding.etuserId.text.toString()).enqueue(object : Callback<UserResponse> {
                 override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
                     if(response.isSuccessful){
+                        var response = response.body()!!
+
                         Glide.with(applicationContext)
-                            .load(response.body()!!.avatar_url)
-                            .into(binding.ivprofile)
-                        binding.tvlogin.setText(response.body()!!.login).toString()
-                        binding.tvfollowers.setText(""+response.body()!!.followers).toString()
-                        binding.tvfollowing.setText(""+response.body()!!.following).toString()
+                            .load(response.avatar_url)
+                            .into(binding.rvprofile)
+
+                        binding.rvId.setText(response.login)
+
+                        binding.cardview.setOnClickListener(View.OnClickListener {
+                            val intent = Intent(applicationContext, UserInfoActivity::class.java)
+
+                            intent.putExtra("Id", response.login)
+                            intent.putExtra("Followers", response.followers)
+                            intent.putExtra("Following", response.following)
+                            intent.putExtra("Profile", response.avatar_url)
+                            intent.putExtra("Bio", response.bio)
+
+                            startActivity(intent)
+                        })
                     }
                 }
 

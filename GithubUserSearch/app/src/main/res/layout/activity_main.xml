@@ -39,131 +39,42 @@
         app:layout_constraintBottom_toBottomOf="@id/layoutId"/>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardview"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="48dp"
-        app:cardCornerRadius="12dp"
+        android:layout_height="80dp"
         app:layout_constraintTop_toBottomOf="@id/layoutId"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintRight_toRightOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="216dp"
-                android:background="@color/black"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"/>
-
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/ivprofile"
-                android:layout_width="104dp"
-                android:layout_height="104dp"
-                android:layout_marginTop="32dp"
+                android:id="@+id/rvprofile"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginLeft="8dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent" />
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
             <TextView
-                android:id="@+id/tvlogin"
+                android:id="@+id/rvId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:textColor="@color/white"
-                android:layout_marginTop="10dp"
-                app:layout_constraintTop_toBottomOf="@id/ivprofile"
-                app:layout_constraintLeft_toLeftOf="@id/ivprofile"
-                app:layout_constraintRight_toRightOf="@id/ivprofile"/>
-            
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardview"
-                android:layout_width="200dp"
-                android:layout_height="64dp"
-                android:layout_marginTop="10dp"
-                app:cardCornerRadius="12dp"
-                app:layout_constraintTop_toBottomOf="@id/tvlogin"
-                app:layout_constraintLeft_toLeftOf="@id/tvlogin"
-                app:layout_constraintRight_toRightOf="@id/tvlogin">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/tvfollowers"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="24sp"
-                        android:textColor="@color/black"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="@id/center"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Follwer"
-                        android:textColor="@color/black"
-                        android:layout_marginTop="-4dp"
-                        app:layout_constraintTop_toBottomOf="@id/tvfollowers"
-                        app:layout_constraintLeft_toLeftOf="@id/tvfollowers"
-                        app:layout_constraintRight_toRightOf="@id/tvfollowers"/>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/center"
-                        android:layout_width="1dp"
-                        android:layout_height="48dp"
-                        android:background="#939393"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
-
-                    <TextView
-                        android:id="@+id/tvfollowing"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="24sp"
-                        android:textColor="@color/black"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintLeft_toRightOf="@id/center"
-                        app:layout_constraintRight_toRightOf="parent"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Follwing"
-                        android:textColor="@color/black"
-                        android:layout_marginTop="-4dp"
-                        app:layout_constraintTop_toBottomOf="@id/tvfollowing"
-                        app:layout_constraintLeft_toLeftOf="@id/tvfollowing"
-                        app:layout_constraintRight_toRightOf="@id/tvfollowing"/>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:id="@+id/tvBio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxLength="40"
                 android:textColor="@color/black"
-                android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@id/cardview"
-                app:layout_constraintLeft_toLeftOf="@id/cardview"
-                app:layout_constraintRight_toRightOf="@id/cardview"/>
+                android:layout_marginLeft="16dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/rvprofile"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+
+
 
 
 
