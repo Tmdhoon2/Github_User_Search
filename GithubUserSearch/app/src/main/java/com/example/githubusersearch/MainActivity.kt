@@ -37,6 +37,12 @@ class MainActivity : AppCompatActivity() {
                         binding.tvemail.setText(response.email)
                         binding.tvBio.setText(response.bio)
 
+                        var input = response.created_at
+
+                        var token = input.split('-')
+                        var token1 = token[2].split('T')
+                        binding.tvjoin.setText("Join : " + token[0] + "-" + token[1] + "-" + token1[0])
+
                         binding.btUrl.setOnClickListener(View.OnClickListener {
                             var intent = Intent(Intent.ACTION_VIEW, Uri.parse(response.html_url))
                             startActivity(intent)

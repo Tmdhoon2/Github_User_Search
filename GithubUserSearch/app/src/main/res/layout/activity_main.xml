@@ -199,6 +199,18 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent" />
 
+            <TextView
+                android:id="@+id/tvjoin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2020-20-20"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/crimson"
+                android:layout_margin="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/btUrl"/>
+
             <Button
                 android:id="@+id/btUrl"
                 android:layout_width="match_parent"
