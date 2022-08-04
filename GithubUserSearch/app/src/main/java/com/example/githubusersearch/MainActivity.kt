@@ -45,9 +45,11 @@ class MainActivity : AppCompatActivity() {
 
                         var token = input.split('-')
                         var token1 = token[2].split('T')
-                        binding.tvjoin.setText("Join : " + token[0] + "-" + token[1] + "-" + token1[0])
+                        binding.tvjoin.setText(token[0] + "-" + token[1] + "-" + token1[0])
 
                         binding.tvrepo.setText(""+response.public_repos)
+
+                        binding.tvcompany.setText(response.company)
 
                         binding.btUrl.setOnClickListener(View.OnClickListener {
                             var intent = Intent(Intent.ACTION_VIEW, Uri.parse(response.html_url))
