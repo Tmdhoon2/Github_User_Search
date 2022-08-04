@@ -37,7 +37,16 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/layoutId"/>
 
-
+    <ImageView
+        android:id="@+id/ivwhite"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:src="@drawable/white"
+        android:elevation="2dp"
+        app:layout_constraintTop_toBottomOf="@id/layoutId"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -174,20 +183,7 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/tvemail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="hks026naver@gmail.com"
-                android:textSize="18sp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/crimson"
-                android:layout_marginTop="16dp"
-                app:layout_constraintLeft_toLeftOf="@id/cardview"
-                app:layout_constraintRight_toRightOf="@id/cardview"
-                app:layout_constraintTop_toBottomOf="@id/cardview"/>
-
-            <TextView
-                android:id="@+id/tvBio"
+                android:id="@+id/tvdes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLength="40"
@@ -195,15 +191,72 @@
                 android:textColor="@color/black"
                 android:fontFamily="@font/crimson"
                 android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/cardview"
+                app:layout_constraintLeft_toLeftOf="@id/cardview"
+                app:layout_constraintRight_toRightOf="@id/cardview"/>
+
+            <TextView
+                android:id="@+id/tvemail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="hks026naver@gmail.com"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/crimson"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/tvdes"
+                app:layout_constraintLeft_toLeftOf="@id/tvdes"
+                app:layout_constraintRight_toRightOf="@id/tvdes"/>
+
+            <ImageView
+                android:id="@+id/ivrepo"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_repo"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
                 app:layout_constraintTop_toBottomOf="@id/tvemail"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent" />
+                app:layout_constraintLeft_toLeftOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvrepositories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Repositories"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/crimson"
+                android:layout_marginLeft="8dp"
+                app:layout_constraintTop_toTopOf="@id/ivrepo"
+                app:layout_constraintLeft_toRightOf="@id/ivrepo"
+                app:layout_constraintBottom_toBottomOf="@id/ivrepo"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginLeft="8dp"
+                android:backgroundTint="#EFF1F3"
+                app:cardCornerRadius="120dp"
+                app:layout_constraintTop_toTopOf="@id/tvrepositories"
+                app:layout_constraintLeft_toRightOf="@id/tvrepositories"
+                app:layout_constraintBottom_toBottomOf="@id/tvrepositories">
+
+                <TextView
+                    android:id="@+id/tvrepo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/crimson"
+                    android:layout_gravity="center"/>
+
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/tvjoin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2020-20-20"
+                android:text="Join : 2020-20-20"
                 android:textSize="18sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/crimson"
