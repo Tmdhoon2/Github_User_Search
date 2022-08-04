@@ -27,21 +27,12 @@ class MainActivity : AppCompatActivity() {
 
                         Glide.with(applicationContext)
                             .load(response.avatar_url)
-                            .into(binding.rvprofile)
+                            .into(binding.ivprofile)
 
-                        binding.rvId.setText(response.login)
-
-                        binding.cardview.setOnClickListener(View.OnClickListener {
-                            val intent = Intent(applicationContext, UserInfoActivity::class.java)
-
-                            intent.putExtra("Id", response.login)
-                            intent.putExtra("Followers", response.followers)
-                            intent.putExtra("Following", response.following)
-                            intent.putExtra("Profile", response.avatar_url)
-                            intent.putExtra("Bio", response.bio)
-
-                            startActivity(intent)
-                        })
+                        binding.tvlogin.setText(response.login)
+                        binding.tvfollowers.setText(""+response.followers)
+                        binding.tvfollowing.setText(""+response.following)
+                        binding.tvBio.setText(response.bio)
                     }
                 }
 
