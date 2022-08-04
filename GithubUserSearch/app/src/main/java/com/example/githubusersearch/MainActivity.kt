@@ -29,7 +29,8 @@ class MainActivity : AppCompatActivity() {
                             .load(response.avatar_url)
                             .into(binding.ivprofile)
 
-                        binding.tvlogin.setText(response.login)
+                        binding.tvid.setText(response.login)
+                        binding.tvname.setText(response.name)
                         binding.tvfollowers.setText(""+response.followers)
                         binding.tvfollowing.setText(""+response.following)
                         binding.tvBio.setText(response.bio)

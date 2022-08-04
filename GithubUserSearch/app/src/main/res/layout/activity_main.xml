@@ -20,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="User-Id"
+            android:fontFamily="@font/crimson"
             android:background="@color/white"
             android:singleLine="true"
             android:maxLength="30"/>
@@ -69,16 +70,30 @@
                 app:layout_constraintRight_toRightOf="parent" />
 
             <TextView
-                android:id="@+id/tvlogin"
+                android:id="@+id/tvid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Github"
                 android:textSize="20sp"
                 android:textColor="@color/white"
+                android:fontFamily="@font/crimson"
                 android:layout_marginTop="10dp"
                 app:layout_constraintTop_toBottomOf="@id/ivprofile"
                 app:layout_constraintLeft_toLeftOf="@id/ivprofile"
                 app:layout_constraintRight_toRightOf="@id/ivprofile"/>
+
+            <TextView
+                android:id="@+id/tvname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/crimson"
+                android:text="정승훈"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginBottom="2dp"
+                app:layout_constraintLeft_toRightOf="@id/tvid"
+                app:layout_constraintBottom_toBottomOf="@id/tvid"/>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview"
@@ -86,9 +101,9 @@
                 android:layout_height="64dp"
                 android:layout_marginTop="10dp"
                 app:cardCornerRadius="12dp"
-                app:layout_constraintTop_toBottomOf="@id/tvlogin"
-                app:layout_constraintLeft_toLeftOf="@id/tvlogin"
-                app:layout_constraintRight_toRightOf="@id/tvlogin">
+                app:layout_constraintTop_toBottomOf="@id/tvid"
+                app:layout_constraintLeft_toLeftOf="@id/tvid"
+                app:layout_constraintRight_toRightOf="@id/tvid">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -101,6 +116,7 @@
                         android:text="0"
                         android:textSize="24sp"
                         android:textColor="@color/black"
+                        android:fontFamily="@font/crimson"
                         android:layout_marginTop="8dp"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
@@ -111,6 +127,7 @@
                         android:layout_height="wrap_content"
                         android:text="Follwer"
                         android:textColor="@color/black"
+                        android:fontFamily="@font/crimson"
                         android:layout_marginTop="-4dp"
                         app:layout_constraintTop_toBottomOf="@id/tvfollowers"
                         app:layout_constraintLeft_toLeftOf="@id/tvfollowers"
@@ -133,6 +150,7 @@
                         android:text="0"
                         android:textSize="24sp"
                         android:textColor="@color/black"
+                        android:fontFamily="@font/crimson"
                         android:layout_marginTop="8dp"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintLeft_toRightOf="@id/center"
@@ -143,6 +161,7 @@
                         android:layout_height="wrap_content"
                         android:text="Follwing"
                         android:textColor="@color/black"
+                        android:fontFamily="@font/crimson"
                         android:layout_marginTop="-4dp"
                         app:layout_constraintTop_toBottomOf="@id/tvfollowing"
                         app:layout_constraintLeft_toLeftOf="@id/tvfollowing"
@@ -157,7 +176,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLength="40"
+                android:text="나는 안드로이드"
                 android:textColor="@color/black"
+                android:fontFamily="@font/crimson"
                 android:layout_marginTop="8dp"
                 app:layout_constraintTop_toBottomOf="@id/cardview"
                 app:layout_constraintLeft_toLeftOf="@id/cardview"
@@ -166,45 +187,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
-
-<!--    <androidx.cardview.widget.CardView-->
-<!--        android:id="@+id/cardview"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="80dp"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/layoutId"-->
-<!--        app:layout_constraintLeft_toLeftOf="parent"-->
-<!--        app:layout_constraintRight_toRightOf="parent">-->
-
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent">-->
-
-<!--            <de.hdodenhof.circleimageview.CircleImageView-->
-<!--                android:id="@+id/rvprofile"-->
-<!--                android:layout_width="64dp"-->
-<!--                android:layout_height="64dp"-->
-<!--                android:layout_marginLeft="8dp"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"/>-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/rvId"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:textSize="20sp"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:layout_marginLeft="16dp"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:layout_constraintLeft_toRightOf="@id/rvprofile"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"/>-->
-
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-<!--    </androidx.cardview.widget.CardView>-->
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
