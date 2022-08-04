@@ -2,6 +2,7 @@ package com.example.githubusersearch
 
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -33,7 +34,14 @@ class MainActivity : AppCompatActivity() {
                         binding.tvname.setText(response.name)
                         binding.tvfollowers.setText(""+response.followers)
                         binding.tvfollowing.setText(""+response.following)
+                        binding.tvemail.setText(response.email)
                         binding.tvBio.setText(response.bio)
+
+                        binding.btUrl.setOnClickListener(View.OnClickListener {
+                            var intent = Intent(Intent.ACTION_VIEW, Uri.parse(response.html_url))
+                            startActivity(intent)
+                        })
+
                     }
                 }
 
