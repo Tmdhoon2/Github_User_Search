@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.ImageView
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.githubusersearch.databinding.ActivityMainBinding
@@ -28,7 +29,14 @@ class MainActivity : AppCompatActivity() {
         val preferences:SharedPreferences = getSharedPreferences("Favorite", MODE_PRIVATE)
         val editor = preferences.edit()
 
+        var i:Int = 0
+
         binding.ivwhite.bringToFront()
+
+        binding.ivlikelist.setOnClickListener(View.OnClickListener {
+            val intent = Intent(applicationContext, LikeListActivity::class.java)
+            startActivity(intent)
+        })
 
         binding.ivSearch.setOnClickListener(View.OnClickListener {
             RetrofitBuilder.api.user(binding.etuserId.text.toString()).enqueue(object : Callback<UserResponse> {
@@ -75,11 +83,15 @@ class MainActivity : AppCompatActivity() {
 
                         binding.ivstar.setOnClickListener(View.OnClickListener {
                             if(preferences.getInt("Favorite" + response.login, 0) == 1){
+                                i--
                                 binding.ivstar.setImageResource(R.drawable.ic_white_star)
                                 editor.putInt("Favorite" + response.login, 0).commit()
                             }else if(preferences.getInt("Favorite" + response.login, 0) == 0){
+                                i++
                                 binding.ivstar.setImageResource(R.drawable.ic_yellow_star)
                                 editor.putInt("Favorite" + response.login, 1).commit()
+                                editor.putString("Url" + i, response.avatar_url).commit()
+                                editor.putString("Name" + i, response.login).commit()
                             }
                         })
 
