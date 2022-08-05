@@ -1,11 +1,15 @@
 package com.example.githubusersearch
 
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.githubusersearch.databinding.ActivityMainBinding
 import retrofit2.Call
@@ -14,11 +18,15 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding:ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val preferences:SharedPreferences = getSharedPreferences("Favorite", MODE_PRIVATE)
+        val editor = preferences.edit()
 
         binding.ivwhite.bringToFront()
 
@@ -54,6 +62,22 @@ class MainActivity : AppCompatActivity() {
                         binding.btUrl.setOnClickListener(View.OnClickListener {
                             var intent = Intent(Intent.ACTION_VIEW, Uri.parse(response.html_url))
                             startActivity(intent)
+                        })
+
+                        if(preferences.getInt("Favorite" + response.login, 0) == 1){
+                            binding.ivstar.setImageResource(R.drawable.ic_yellow_star)
+                        }else if(preferences.getInt("Favorite" + response.login, 0) == 0){
+                            binding.ivstar.setImageResource(R.drawable.ic_white_star)
+                        }
+
+                        binding.ivstar.setOnClickListener(View.OnClickListener {
+                            if(preferences.getInt("Favorite" + response.login, 0) == 1){
+                                binding.ivstar.setImageResource(R.drawable.ic_white_star)
+                                editor.putInt("Favorite" + response.login, 0).commit()
+                            }else if(preferences.getInt("Favorite" + response.login, 0) == 0){
+                                binding.ivstar.setImageResource(R.drawable.ic_yellow_star)
+                                editor.putInt("Favorite" + response.login, 1).commit()
+                            }
                         })
 
                     }
