@@ -70,6 +70,9 @@ class MainActivity : AppCompatActivity() {
                             binding.ivstar.setImageResource(R.drawable.ic_white_star)
                         }
 
+                        val imm: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                        imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+
                         binding.ivstar.setOnClickListener(View.OnClickListener {
                             if(preferences.getInt("Favorite" + response.login, 0) == 1){
                                 binding.ivstar.setImageResource(R.drawable.ic_white_star)
