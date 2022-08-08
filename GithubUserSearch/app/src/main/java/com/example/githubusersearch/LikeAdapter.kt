@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import java.util.ArrayList
 
-class LikeAdapter(val list: ArrayList<UserLikes>) : RecyclerView.Adapter<LikeAdapter.LikeViewHolder>() {
+class LikeAdapter(val list: List<UserLikes>) : RecyclerView.Adapter<LikeAdapter.LikeViewHolder>() {
 
     class LikeViewHolder(itemView:View) : RecyclerView.ViewHolder(itemView) {
         val profile = itemView.findViewById<ImageView>(R.id.ivlikeprofile)
