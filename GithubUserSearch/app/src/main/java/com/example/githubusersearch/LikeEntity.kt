@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "like")
 data class LikeEntity(
     @PrimaryKey(autoGenerate = true)
-    var url: String,
-    var name: String
+    val id: Long?,
+    var url: String?,
+    var name: String?
 )

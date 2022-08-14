@@ -1,17 +1,24 @@
 package com.example.githubusersearch.Activity
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
+import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.githubusersearch.Api.RetrofitBuilder
 import com.example.githubusersearch.DTO.UserResponse
+import com.example.githubusersearch.LikeDatabase
+import com.example.githubusersearch.LikeEntity
+import com.example.githubusersearch.LikeListActivity
 import com.example.githubusersearch.R
+import com.example.githubusersearch.Recyclerview.LikeAdapter
 import com.example.githubusersearch.databinding.ActivityMainBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -19,12 +26,15 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding:ActivityMainBinding
+    lateinit var db: LikeDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        db = LikeDatabase.getInstace(this)!!
 
         val preferences:SharedPreferences = getSharedPreferences("Favorite", MODE_PRIVATE)
         val editor = preferences.edit()
@@ -35,12 +45,24 @@ class MainActivity : AppCompatActivity() {
         imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
 
         binding.ivSearch.setOnClickListener(View.OnClickListener {
-            RetrofitBuilder.api.user(binding.etuserId.text.toString()).enqueue(object : Callback<UserResponse> {
-                override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
-                    if(response.isSuccessful){
-                        binding.ivwhite.setImageResource(0)
 
+            RetrofitBuilder.api.user(binding.etuserId.text.toString()).enqueue(object : Callback<UserResponse> {
+
+                override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
+
+                    if(response.isSuccessful){
                         var response = response.body()!!
+
+                        binding.ivlikelist.setOnClickListener {
+                            val intent = Intent(applicationContext, LikeListActivity::class.java)
+                            if(preferences.getInt("Favorite" + response.login, 0) == 1){
+                                intent.putExtra("Url", response.avatar_url)
+                                intent.putExtra("Name", response.login)
+                            }
+                            startActivity(intent)
+                        }
+
+                        binding.ivwhite.setImageResource(0)
 
                         if(preferences.getInt("Favorite" + response.login, 0) == 1){
                             binding.ivstar.setImageResource(R.drawable.ic_yellow_star)
@@ -89,10 +111,5 @@ class MainActivity : AppCompatActivity() {
 
             })
         })
-
-        binding.ivstar.setOnClickListener(View.OnClickListener {
-            
-        })
-
     }
 }

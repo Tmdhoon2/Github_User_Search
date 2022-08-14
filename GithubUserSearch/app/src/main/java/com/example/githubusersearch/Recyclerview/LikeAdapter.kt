@@ -33,6 +33,6 @@ class LikeAdapter (val context: Context, var list: List<LikeEntity>) : RecyclerV
     }
 
     override fun getItemCount(): Int {
-
+        return list.size
     }
 }

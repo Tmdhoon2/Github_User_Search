@@ -16,6 +16,9 @@
         android:theme="@style/Theme.GithubUserSearch"
         tools:targetApi="31">
         <activity
+            android:name=".LikeListActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.LikeListActivity"
             android:exported="false" />
         <activity
