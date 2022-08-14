@@ -8,5 +8,4 @@ data class LikeEntity(
     @PrimaryKey(autoGenerate = true)
     var url: String,
     var name: String
-
 )
