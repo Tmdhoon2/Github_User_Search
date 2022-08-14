@@ -89,5 +89,10 @@ class MainActivity : AppCompatActivity() {
 
             })
         })
+
+        binding.ivstar.setOnClickListener(View.OnClickListener {
+            
+        })
+
     }
 }
