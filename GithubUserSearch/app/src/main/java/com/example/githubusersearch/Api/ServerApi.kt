@@ -1,7 +1,7 @@
-package com.example.githubusersearch
+package com.example.githubusersearch.Api
 
+import com.example.githubusersearch.DTO.UserResponse
 import retrofit2.Call
-import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Path
 

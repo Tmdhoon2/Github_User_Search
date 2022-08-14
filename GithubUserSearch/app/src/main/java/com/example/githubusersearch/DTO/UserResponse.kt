@@ -1,4 +1,4 @@
-package com.example.githubusersearch
+package com.example.githubusersearch.DTO
 
 data class UserResponse(
     val avatar_url: String,

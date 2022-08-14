@@ -1,4 +1,4 @@
-package com.example.githubusersearch
+package com.example.githubusersearch.Activity
 
 import android.content.Context
 import android.content.Intent
@@ -6,10 +6,12 @@ import android.content.SharedPreferences
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.bumptech.glide.Glide
+import com.example.githubusersearch.Api.RetrofitBuilder
+import com.example.githubusersearch.DTO.UserResponse
+import com.example.githubusersearch.R
 import com.example.githubusersearch.databinding.ActivityMainBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -17,8 +19,6 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding:ActivityMainBinding
-    private val arraylist = arrayListOf<UserLikes>()
-    private lateinit var adapter:LikeAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,16 +56,6 @@ class MainActivity : AppCompatActivity() {
                                 binding.ivstar.setImageResource(R.drawable.ic_yellow_star)
                                 editor.putInt("Favorite" + response.login, 1).commit()
                             }
-                        })
-
-                        binding.ivlikelist.setOnClickListener(View.OnClickListener {
-                            val intent = Intent(this@MainActivity, LikeListActivity::class.java)
-
-                            if(preferences.getInt("Favorite" + response.login, 0) == 1){
-                                intent.putExtra("url", response.avatar_url)
-                                intent.putExtra("id", response.login)
-                            }
-                            startActivity(intent)
                         })
 
                         Glide.with(applicationContext)

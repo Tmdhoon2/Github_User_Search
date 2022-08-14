@@ -1,4 +1,4 @@
-package com.example.githubusersearch
+package com.example.githubusersearch.Api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

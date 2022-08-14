@@ -16,16 +16,16 @@
         android:theme="@style/Theme.GithubUserSearch"
         tools:targetApi="31">
         <activity
-            android:name=".LikeListActivity"
+            android:name=".Activity.LikeListActivity"
             android:exported="false" />
         <activity
             android:name=".UserInfoActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".Activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
