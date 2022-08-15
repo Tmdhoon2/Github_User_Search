@@ -28,6 +28,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding:ActivityMainBinding
     lateinit var db: LikeDatabase
 
+    companion object{
+        lateinit var preferences:SharedPreferences
+        lateinit var editor: SharedPreferences.Editor
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -36,8 +41,8 @@ class MainActivity : AppCompatActivity() {
 
         db = LikeDatabase.getInstace(this)!!
 
-        val preferences:SharedPreferences = getSharedPreferences("Favorite", MODE_PRIVATE)
-        val editor = preferences.edit()
+        preferences = getSharedPreferences("Favorite", MODE_PRIVATE)
+        editor = preferences.edit()
 
         binding.ivwhite.bringToFront()
 
@@ -55,10 +60,6 @@ class MainActivity : AppCompatActivity() {
 
                         binding.ivlikelist.setOnClickListener {
                             val intent = Intent(applicationContext, LikeListActivity::class.java)
-                            if(preferences.getInt("Favorite" + response.login, 0) == 1){
-                                intent.putExtra("Url", response.avatar_url)
-                                intent.putExtra("Name", response.login)
-                            }
                             startActivity(intent)
                         }
 
@@ -76,6 +77,8 @@ class MainActivity : AppCompatActivity() {
                                 editor.putInt("Favorite" + response.login, 0).commit()
                             }else if(preferences.getInt("Favorite" + response.login, 0) == 0){
                                 binding.ivstar.setImageResource(R.drawable.ic_yellow_star)
+                                editor.putString("Url", response.avatar_url).commit()
+                                editor.putString("Name", response.login).commit()
                                 editor.putInt("Favorite" + response.login, 1).commit()
                             }
                         })

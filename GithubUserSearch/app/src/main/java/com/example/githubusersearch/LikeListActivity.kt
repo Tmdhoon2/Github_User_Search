@@ -1,6 +1,7 @@
 package com.example.githubusersearch
 
 import android.annotation.SuppressLint
+import android.content.SharedPreferences
 import android.media.Image
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +9,7 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.githubusersearch.Activity.MainActivity
 import com.example.githubusersearch.Recyclerview.LikeAdapter
 import com.example.githubusersearch.databinding.ActivityLikeListBinding
 
@@ -25,13 +27,15 @@ class LikeListActivity : AppCompatActivity() {
 
         db = LikeDatabase.getInstace(this)!!
 
-        val url = intent.getStringExtra("Url")
-        val name = intent.getStringExtra("Name")
+        val url = MainActivity.preferences.getString("Url", "")
+        val name = MainActivity.preferences.getString("Name", "")
 
-        Toast.makeText(applicationContext, url + "", Toast.LENGTH_SHORT).show()
-
-        val like = LikeEntity(null, url, name)
-        addlike(like)
+        if(url != "" && name != "") {
+            val like = LikeEntity(null, url, name)
+            addlike(like)
+            MainActivity.editor.putString("Url", "").commit()
+            MainActivity.editor.putString("Name", "").commit()
+        }
 
         binding.recyclerview.layoutManager = LinearLayoutManager(this)
 

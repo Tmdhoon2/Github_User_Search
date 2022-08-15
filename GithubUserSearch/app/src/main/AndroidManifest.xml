@@ -19,12 +19,6 @@
             android:name=".LikeListActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.LikeListActivity"
-            android:exported="false" />
-        <activity
-            android:name=".UserInfoActivity"
-            android:exported="false" />
-        <activity
             android:name=".Activity.MainActivity"
             android:exported="false" />
         <activity
