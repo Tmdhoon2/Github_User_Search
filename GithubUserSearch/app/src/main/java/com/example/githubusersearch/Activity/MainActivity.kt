@@ -12,12 +12,9 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.githubusersearch.*
 import com.example.githubusersearch.Api.RetrofitBuilder
 import com.example.githubusersearch.DTO.UserResponse
-import com.example.githubusersearch.LikeDatabase
-import com.example.githubusersearch.LikeEntity
-import com.example.githubusersearch.LikeListActivity
-import com.example.githubusersearch.R
 import com.example.githubusersearch.Recyclerview.LikeAdapter
 import com.example.githubusersearch.databinding.ActivityMainBinding
 import retrofit2.Call
@@ -27,6 +24,7 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
     private lateinit var binding:ActivityMainBinding
     lateinit var db: LikeDatabase
+    private lateinit var onDeleteListener: onDeleteListener
 
     companion object{
         lateinit var preferences:SharedPreferences
@@ -74,6 +72,8 @@ class MainActivity : AppCompatActivity() {
                         binding.ivstar.setOnClickListener(View.OnClickListener {
                             if(preferences.getInt("Favorite" + response.login, 0) == 1){
                                 binding.ivstar.setImageResource(R.drawable.ic_white_star)
+                                var like = LikeEntity(null, response.avatar_url, response.login)
+                                onDeleteListener.onDeleteListener(like)
                                 editor.putInt("Favorite" + response.login, 0).commit()
                             }else if(preferences.getInt("Favorite" + response.login, 0) == 0){
                                 binding.ivstar.setImageResource(R.drawable.ic_yellow_star)

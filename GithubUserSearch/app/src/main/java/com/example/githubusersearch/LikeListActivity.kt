@@ -74,4 +74,14 @@ class LikeListActivity : AppCompatActivity() {
     private fun setRecycerView(likelist: List<LikeEntity>) {
         binding.recyclerview.adapter = LikeAdapter(this, likelist)
     }
+
+    fun deleteLike(like: LikeEntity){
+        val deleteTask = object : AsyncTask<Unit, Unit, Unit>(){
+            override fun doInBackground(vararg p0: Unit?) {
+                db.likeDAO().delete(like)
+            }
+        }
+
+        deleteTask.execute()
+    }
 }
