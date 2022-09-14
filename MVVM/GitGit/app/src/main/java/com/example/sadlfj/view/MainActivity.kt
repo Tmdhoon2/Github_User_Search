@@ -2,6 +2,7 @@ package com.example.sadlfj.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import com.example.sadlfj.R
 import com.example.sadlfj.viewmodel.MainViewModel
@@ -10,6 +11,7 @@ import com.example.sadlfj.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mainViewModel: MainViewModel
+
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         binding.ivSearch.setOnClickListener {
             val id = binding.etuserId.text.toString()
             if(id != null){
+                Log.d("Test", "MainActivity : onClick")
                 mainViewModel.getUser(id)
             }
         }
