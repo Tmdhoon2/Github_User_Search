@@ -2,6 +2,7 @@ package com.example.sadlfj.model
 
 import android.util.Log
 import com.example.sadlfj.api.ApiProvider
+import com.example.sadlfj.view.MainActivity
 import com.example.sadlfj.viewmodel.MainViewModel
 import retrofit2.Call
 import retrofit2.Callback
@@ -14,6 +15,8 @@ class UserRepository(val mainViewModel: MainViewModel) {
                 if (response.isSuccessful) {
                     Log.d("Test", "UserRepository : getUser successful")
                     mainViewModel.setUser(response.body()!!)
+                    mainViewModel.setProfile()
+                    MainActivity.editor.putString("url", response.body()!!.avatar_url).commit()
 
                 }
             }

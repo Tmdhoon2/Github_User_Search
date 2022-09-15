@@ -16,18 +16,13 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-@BindingAdapter("loadImage")
-fun CircleImageView.loadImage(url: String?) {
-    Glide.with(this.context)
-        .load(url)
-        .into(this)
-}
-
 class MainViewModel : ViewModel() {
     private val userRepository = UserRepository(this)
 
     private val _userResponse: MutableLiveData<UserResponse> = MutableLiveData()
     val userResponse: LiveData<UserResponse> = _userResponse
+    private val _userProfile: MutableLiveData<Int> = MutableLiveData()
+    val userProfile: LiveData<Int> = _userProfile
 
     fun getUser(id: String) {
         userRepository.getUser(id)
@@ -36,4 +31,13 @@ class MainViewModel : ViewModel() {
     fun setUser(userResponse: UserResponse) {
         _userResponse.value = userResponse
     }
+
+    fun setProfile(){
+        _userProfile.value = 0
+    }
+
+    fun url(){
+
+    }
+
 }
