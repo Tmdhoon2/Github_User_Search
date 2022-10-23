@@ -1,10 +1,10 @@
-package com.example.sadlfj.view
+package com.example.gitgit.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import com.example.sadlfj.R
+import com.example.gitgit.R
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

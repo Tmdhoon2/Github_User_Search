@@ -1,4 +1,4 @@
-package com.example.sadlfj.model
+package com.example.gitgit.model
 
 data class UserResponse(
     val avatar_url: String,

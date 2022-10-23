@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".view.fragment.HomeFragment">
+
+    <data>
+
+        <variable
+            name="MainViewModel"
+            type="com.example.gitgit.viewmodel.SearchViewModel" />
+
+        <variable
+            name="SearchFragment"
+            type="com.example.gitgit.view.fragment.SearchFragment" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constrain_main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:onClick="@{() -> SearchFragment.hideKey()}">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayout_main_id"
+            style="@style/Theme.GitGit.TextInputLayout"
+            app:hintEnabled="false"
+            app:hintTextColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:id="@+id/et_main_userId"
+                style="@style/Theme.GitGit.EditText_Search"
+                android:hint="@string/main_userId" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/img_main_search"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/main_search"
+            android:onClick="@{() -> SearchFragment.initSearchButton()}"
+            android:src="@drawable/ic_search"
+            app:layout_constraintBottom_toBottomOf="@id/inputLayout_main_id"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/inputLayout_main_id" />
+
+        <ImageView
+            android:id="@+id/img_main_block"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:contentDescription="@string/main_block_image"
+            android:translationZ="64dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputLayout_main_id" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideLine_main_left"
+            style="@style/Theme.GitGit.GuideLine_Vertical"
+            app:layout_constraintGuide_percent="0.12" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/right"
+            style="@style/Theme.GitGit.GuideLine_Vertical"
+            app:layout_constraintGuide_percent="0.88" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_main_frame"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginVertical="48dp"
+            android:elevation="8dp"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/right"
+            app:layout_constraintStart_toEndOf="@id/guideLine_main_left"
+            app:layout_constraintTop_toBottomOf="@id/inputLayout_main_id">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="216dp"
+                    android:background="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/cimg_main_profile"
+                    loadImage="@{MainViewModel.userResponse.body().avatar_url}"
+                    android:layout_width="104dp"
+                    android:layout_height="104dp"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_main_id"
+                    style="@style/Theme.GitGit.TextView"
+                    android:layout_marginTop="10dp"
+                    android:text="@{MainViewModel.userResponse.body().login}"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="@id/cimg_main_profile"
+                    app:layout_constraintStart_toStartOf="@id/cimg_main_profile"
+                    app:layout_constraintTop_toBottomOf="@id/cimg_main_profile" />
+
+                <TextView
+                    android:id="@+id/tv_main_name"
+                    style="@style/Theme.GitGit.TextView"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="2dp"
+                    android:text="@{MainViewModel.userResponse.body().name}"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_main_id"
+                    app:layout_constraintStart_toEndOf="@id/tv_main_id" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_main_follow"
+                    android:layout_width="0dp"
+                    android:layout_height="64dp"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="12dp"
+                    android:layout_marginHorizontal="64dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_main_id">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/tv_main_followers_count"
+                            style="@style/Theme.GitGit.TextView"
+                            android:layout_marginTop="8dp"
+                            android:text="@{Integer.toString(MainViewModel.userResponse.body().followers)}"
+                            android:textSize="24sp"
+                            app:layout_constraintEnd_toEndOf="@id/constraint_main_layout_center"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            style="@style/Theme.GitGit.TextView"
+                            android:layout_marginTop="-4dp"
+                            android:text="@string/main_follower"
+                            app:layout_constraintEnd_toEndOf="@id/tv_main_followers_count"
+                            app:layout_constraintStart_toStartOf="@id/tv_main_followers_count"
+                            app:layout_constraintTop_toBottomOf="@id/tv_main_followers_count" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/constraint_main_layout_center"
+                            android:layout_width="1dp"
+                            android:layout_height="48dp"
+                            android:background="#939393"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_main_following_count"
+                            style="@style/Theme.GitGit.TextView"
+                            android:layout_marginTop="8dp"
+                            android:text="@{Integer.toString(MainViewModel.userResponse.body().following)}"
+                            android:textSize="24sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/constraint_main_layout_center"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            style="@style/Theme.GitGit.TextView"
+                            android:layout_marginTop="-4dp"
+                            android:text="@string/main_following"
+                            app:layout_constraintEnd_toEndOf="@id/tv_main_following_count"
+                            app:layout_constraintStart_toStartOf="@id/tv_main_following_count"
+                            app:layout_constraintTop_toBottomOf="@id/tv_main_following_count" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/tv_main_des"
+                    style="@style/Theme.GitGit.TextView"
+                    android:layout_marginTop="8dp"
+                    android:maxLength="40"
+                    android:text="@{MainViewModel.userResponse.body().bio}"
+                    app:layout_constraintEnd_toEndOf="@id/cv_main_follow"
+                    app:layout_constraintStart_toStartOf="@id/cv_main_follow"
+                    app:layout_constraintTop_toBottomOf="@id/cv_main_follow" />
+
+                <TextView
+                    android:id="@+id/tv_main_email"
+                    style="@style/Theme.GitGit.TextView"
+                    android:layout_marginTop="8dp"
+                    android:text="@{MainViewModel.userResponse.body().email}"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="@id/tv_main_des"
+                    app:layout_constraintStart_toStartOf="@id/tv_main_des"
+                    app:layout_constraintTop_toBottomOf="@id/tv_main_des" />
+
+                <ImageView
+                    android:id="@+id/img_main_company"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:contentDescription="@string/main_location"
+                    android:src="@drawable/ic_location"
+                    app:layout_constraintEnd_toEndOf="@id/img_main_repository"
+                    app:layout_constraintStart_toStartOf="@id/img_main_repository"
+                    app:layout_constraintTop_toBottomOf="@id/img_main_repository" />
+
+                <TextView
+                    android:id="@+id/tv_main_location"
+                    style="@style/Theme.GitGit.TextView"
+                    android:layout_marginStart="8dp"
+                    android:text="@{MainViewModel.userResponse.body().location}"
+                    app:layout_constraintBottom_toBottomOf="@id/img_main_company"
+                    app:layout_constraintStart_toEndOf="@id/img_main_company"
+                    app:layout_constraintTop_toTopOf="@id/img_main_company" />
+
+                <ImageView
+                    android:id="@+id/img_main_join"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:contentDescription="@string/main_calendar"
+                    android:src="@drawable/ic_join"
+                    app:layout_constraintEnd_toEndOf="@id/img_main_company"
+                    app:layout_constraintStart_toStartOf="@id/img_main_company"
+                    app:layout_constraintTop_toBottomOf="@id/img_main_company" />
+
+                <TextView
+                    android:id="@+id/tv_main_join"
+                    style="@style/Theme.GitGit.TextView"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="2dp"
+                    android:text="@{MainViewModel.createdAt}"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@id/img_main_join"
+                    app:layout_constraintStart_toEndOf="@id/img_main_join"
+                    app:layout_constraintTop_toTopOf="@id/img_main_join" />
+
+                <ImageView
+                    android:id="@+id/img_main_repository"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:contentDescription="@string/main_repository_des"
+                    android:src="@drawable/ic_repo"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_main_email" />
+
+                <TextView
+                    android:id="@+id/tv_main_repository"
+                    style="@style/Theme.GitGit.TextView"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/main_repository"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@id/img_main_repository"
+                    app:layout_constraintStart_toEndOf="@id/img_main_repository"
+                    app:layout_constraintTop_toTopOf="@id/img_main_repository" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_main_repository"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="2dp"
+                    android:backgroundTint="#EFF1F3"
+                    app:cardCornerRadius="120dp"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_main_repository"
+                    app:layout_constraintStart_toEndOf="@id/tv_main_repository"
+                    app:layout_constraintTop_toTopOf="@id/tv_main_repository">
+
+                    <TextView
+                        android:id="@+id/tv_main_repo_count"
+                        style="@style/Theme.GitGit.TextView"
+                        android:layout_gravity="center"
+                        android:text="@{Integer.toString(MainViewModel.userResponse.body().public_repos)}" />
+
+                </androidx.cardview.widget.CardView>
+
+                <Button
+                    android:id="@+id/bt_main_url"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="@color/black"
+                    android:fontFamily="@font/crimson"
+                    android:gravity="center"
+                    android:text="@string/main_show_on_github"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

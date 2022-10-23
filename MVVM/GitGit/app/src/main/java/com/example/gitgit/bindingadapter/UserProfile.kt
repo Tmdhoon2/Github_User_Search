@@ -1,4 +1,4 @@
-package com.example.sadlfj.bindingadapter
+package com.example.gitgit.bindingadapter
 
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
